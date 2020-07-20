@@ -1,0 +1,8 @@
+.Item{
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.Image{
+    border-radius: 60px;
+}

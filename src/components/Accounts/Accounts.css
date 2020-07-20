@@ -1,0 +1,11 @@
+.Accounts{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+}
+.Header{
+    margin-left: 20px;
+}
+.ItemsList{
+    background-color: yellow;
+}
