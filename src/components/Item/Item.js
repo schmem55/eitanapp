@@ -7,7 +7,7 @@ export default function Item() {
     <div >
         <div className="Item">
             <AiOutlineCloseCircle color="gray" className="Icon"/>
-            <img className="Image" height="120" width="120" src={require('../../images/profile.jpg')}/>
+            <img alt="profileIcon" className="Image" height="120" width="120" src={require('../../images/profile.jpg')}/>
         </div>
     </div>
   );
