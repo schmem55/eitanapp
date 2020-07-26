@@ -10,10 +10,27 @@ import Connection from '../Connection/Connection'
 export default function Register() {
   const[isClicked,setIsClicked]=useState(false)
 
+  const [apps,setApps] = useState({
+    "Facebook":false,
+    "Whatsapp":false,
+    "Instagram":false,
+    "Linkedin":false,
+    "Twitter":false
+  })
+
   return (
     <div className="Register">
       <h3 className='Title'>Connect to your account</h3>
       <div className="Apps">
+
+        {/* {Object.keys(apps).map((app,i)=>{
+          return(
+            <button onClick={()=>setApps({...app},!apps[app])}  className="IconApp">
+              <FaWhatsapp size={30}/> 
+          </button>
+          )
+
+        })} */}
         <button onClick={()=>setIsClicked(prevState=>!prevState)} className="IconApp">
           <FaFacebookF size={30}/>  
         </button>
@@ -33,7 +50,7 @@ export default function Register() {
           <img alt="tiktok" width="30" height="30" src={require('../../images/logo-tiktok.svg')}/>
         </button>
       </div>
-      {isClicked &&(
+      {true&&(
         <Connection/>
       )}
 

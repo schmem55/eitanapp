@@ -5,6 +5,41 @@
     border-radius: 30px;
     margin-left: 20px;
     margin-top: 20px;
-    border:1px  solid #eb6631;
+    border:2px  solid #eb6631;
+}
+input{
+    transform: translateY(50%);
+    border-radius: 12px;
+    height: 30px;
+    width: 350px;
+    display: block;
+    margin:30px;
+    border: none;
+    background-color: gainsboro;
+    Box-shadow:
+    0 6px 6px rgba(0,0,0,0.23);
+}
+::placeholder{
+    padding-left: 10px;
+}
+
+.Connection .Button{
+    background-color: orchid;
+}
+.Connection button{
+    border-radius: 12px;
+    height: 30px;
+    width: 100px;
+    border:none;
+    background-color: #eb6631;
+    color: white;
+    display: inline-block;
+    position: absolute;
+    right: 40px;
+    margin-top: 20px;
+ 
+
+
+    
     
 }
