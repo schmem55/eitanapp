@@ -1,13 +1,16 @@
 .Register{
-    display: flex;
-    flex:1;
-    flex-direction: column;
+    width: 49%;
+    float: right;
+    padding-top: 20px;
+}
+.RegisterTrue{
+    width: 100%;
+    padding-top: 20px;
 }
 .Title{
     margin-left: 30px;
 }
-.Apps{
-}
+
 .Apps > *{
     background-color: white;
     margin:20px;
