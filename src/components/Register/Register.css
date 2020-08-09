@@ -4,8 +4,10 @@
     padding-top: 20px;
 }
 .RegisterTrue{
-    width: 100%;
+    width: 49%;
+    float: left;
     padding-top: 20px;
+    
 }
 .Title{
     margin-left: 30px;

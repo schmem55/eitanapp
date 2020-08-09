@@ -20,14 +20,14 @@ export default function Register(props) {
 
   const setRegisterToAllView = ()=>{
     props.onChangeFading(!props.fading);
-    setTimeout(()=>props.onChangeIsClicked(!props.isClicked),1000)
+    props.onChangeIsClicked(!props.isClicked)
   }
 
   return (
     <Animated 
       className={props.isClicked?"RegisterTrue":"Register"} 
       animationOut="slideInRight"  
-      animationOutDelay="1000"
+      animationOutDelay="500"
       isVisible={!props.isClicked} >
       <h3 className='Title'>Connect to your account</h3>
       <div className="Apps">
