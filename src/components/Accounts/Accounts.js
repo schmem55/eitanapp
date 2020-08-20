@@ -5,8 +5,8 @@ import {Animated} from 'react-animated-css';
 
 export default function Accounts(props) {
   return (
-    <Animated animationOut="zoomOut"  isVisible={!props.fading} className={props.isRegisteredIconClicked ? "AccountsNone":"Accounts"}>
-      <div>
+    // <Animated animationOut="zoomOut"  isVisible={!props.fading} className={props.isRegisteredIconClicked ? "AccountsNone":"Accounts"}>
+      <div className="Accounts">
         <div className="Header">
           <h3>Your accounts</h3>
           <h4>you can disconnect any account by clicking the cross </h4>
@@ -24,7 +24,7 @@ export default function Accounts(props) {
           <Item/>
         </div>     
     </div>
-  </Animated>
-  );
+    //</Animated>
+    );
 }
 

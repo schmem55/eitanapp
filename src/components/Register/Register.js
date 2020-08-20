@@ -9,7 +9,7 @@ import Connection from '../Connection/Connection'
 import {Animated} from 'react-animated-css';
 
 export default function Register(props) {
-  
+
   const [apps,setApps] = useState({
     "Facebook":false,
     "Whatsapp":false,
@@ -19,16 +19,17 @@ export default function Register(props) {
   })
 
   const setRegisterToAllView = ()=>{
-    props.onChangeFading(!props.fading);
-    props.onChangeIsClicked(!props.isClicked)
+    // props.onChangeFading(!props.fading);
+    // props.onChangeIsClicked(!props.isClicked)
   }
 
   return (
-    <Animated 
-      className={props.isClicked?"RegisterTrue":"Register"} 
-      animationOut="slideInRight"  
-      animationOutDelay="500"
-      isVisible={!props.isClicked} >
+    // <Animated 
+    //   className={props.isClicked?"RegisterTrue":"Register"} 
+    //   animationOut="slideInRight"  
+    //   animationOutDelay="500"
+    //   isVisible={!props.isClicked} >
+    <div className="Register">
       <h3 className='Title'>Connect to your account</h3>
       <div className="Apps">
 
@@ -43,27 +44,29 @@ export default function Register(props) {
         <button onClick={()=>setRegisterToAllView()} className="IconApp">
           <FaFacebookF size={30}/>  
         </button>
-        <button onClick={()=>props.onChange(true)}  className="IconApp">
+        <button onClick={()=>setRegisterToAllView()}  className="IconApp">
           <FaWhatsapp size={30}/> 
         </button>
-        <button  onClick={()=>props.onChange(true)} className="IconApp">
+        <button  onClick={()=>setRegisterToAllView()} className="IconApp">
           <FaInstagram  size={30}/>  
         </button>
-        <button  onClick={()=>props.onChange(true)} className="IconApp">
+        <button  onClick={()=>setRegisterToAllView()} className="IconApp">
           <FaLinkedinIn  size={30}/>  
         </button>
-        <button  onClick={()=>props.onChange(true)} className="IconApp">
+        <button  onClick={()=>setRegisterToAllView()} className="IconApp">
           <FaTwitter size={30}/>  
         </button>
-        <button onClick={()=>props.onChange(true)} className="IconApp">
+        <button onClick={()=>setRegisterToAllView()} className="IconApp">
           <img alt="tiktok" width="30" height="30" src={require('../../images/logo-tiktok.svg')}/>
         </button>
       </div>
-     {props.isClicked &&(
-       <Connection/>
-     )
-     } 
-    </Animated>
+      
+      <Connection/>
+      
+
+  </div>
+  //</Animated>
+
   );
 }
 
