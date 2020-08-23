@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ProgressBar from '../ProgressBar/ProgressBar'
+import ProgressBar from '../ProgressBar/ProgressBar';
 import './Connection.css';
 
 const response={
@@ -23,8 +23,11 @@ const response={
 export default function Connection() {
   const [isConnecting,setIsConnecting] = useState(false)
   const [completed, setCompleted] = useState(0);
+  const [value, setValue] = useState(4);
+  const [socketResponse,setSocketResponse]=useState(null)
 
   useEffect(() => {
+    
   }, []);
 
 
@@ -32,70 +35,78 @@ export default function Connection() {
     setIsConnecting(true)
   }
 
-  const makeRequest=()=>{
-    //do the request and get response
-    var responseAfterRequest = "1"
-    if (responseAfterRequest==="-1"){
-      return (
-        <div>{response["-1"].message}</div>
-        )
-    } else if (responseAfterRequest === "0"){
+  const changeStatus=()=>{
+    //socket
+    if (socketResponse==="pending"){
+      if(completed<=100){
+        setTimeout(() => {
+          checkIfCreationIsOver()
+        }, 1000);
+        return (
+          <ProgressBar completed={completed} />
+          )
+      }else{
+        return (<div>success</div>)
+  
+      }
+    } else if (socketResponse==="-1"){
+      return (<div>{response["-1"].message}</div>)
+    } else if (socketResponse === "0"){
       //then return message or html or qrcode
-      
-    }else{
-      //check if pending 
-        if(completed<=100){
-          setTimeout(() => {
-            checkIfCreationIsOver()
-          }, 100);
-          return (
-            <ProgressBar  completed={completed} />
-            )
-        }else{
-          return (<div>success</div>)
+      return (<div>{response["0"].message}</div>)
 
-        }
-      } 
+    }else{
+      if(completed<=100){
+        setTimeout(() => {
+          checkIfCreationIsOver()
+        }, 1000);
+        return (
+          <ProgressBar completed={completed} />
+          )
+      }else{
+        return (<div>success</div>)
+      }
+    } 
   }
 
   const checkIfCreationIsOver=()=>{
     //make request and check response pending or 2
-    var response = "pending"
-    if (response === "pending"){
+    
+    if (socketResponse === "pending"){
       if (completed>=90 && completed<100  ){
         setCompleted(99)
       }else{
-        setCompleted(completed+10)
+        setCompleted(completed+((100-completed)/30))
       }
     }
-    else {
-      if(completed===100){
-        setCompleted(101)
-      }else{
-        setCompleted(100)
-      }
+    else if(completed===100){
+      setCompleted(101)
     }
+    else{
+      setCompleted(100)
+    }
+  }
+
+  const changeSocketResponse=(e)=>{
+    setCompleted(0)
+    setSocketResponse(e.target.value)
   }
   return (
       <div className="Connection">
-      {
-        !isConnecting &&(
+        {socketResponse?(
+          <div className="Response">
+            {changeStatus()}
+          </div>
+        ):
           <div>
             <input placeholder="username"/>
             <input placeholder="password"/>
           </div>
-      )}
-      {isConnecting? 
-        <div className="Response">
-         {makeRequest()}
-        </div>
-      :
-      <div className={"Button"}>
-        <button onClick={connect}>
-          Connect
-        </button>
-      </div>
-      }  
+        }
+
+      <div className="Box">
+        <input onChange={(e)=>changeSocketResponse(e)}/>
+        </div>  
     </div>
        
     );

@@ -23,9 +23,7 @@ input{
 ::placeholder{
     padding-left: 10px;
 }
-.ProgressBar{
 
-}
 .Connection .Button{
     background-color: orchid;
 }
@@ -39,4 +37,11 @@ input{
     float: right;
     margin-right: 20px;
     margin-top: 90px;
+}
+
+.Box{
+    background-color: green;
+    width: 200px;
+    height: 200px;
+    transform: translateX(-100%);
 }
