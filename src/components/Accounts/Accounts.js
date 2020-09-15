@@ -1,30 +1,52 @@
-import React from 'react';
-import './Accounts.css';
-import Item from '../Item/Item';
-import {Animated} from 'react-animated-css';
+import React, { useEffect, useState, useContext } from "react";
+import "./Accounts.css";
+import Item from "../Item/Item";
+import UserContext from "../../Context";
 
-export default function Accounts(props) {
+const ITEMS = [
+  {
+    id: 1,
+    userAccount: "Facebook",
+    isUploading: false,
+  },
+  {
+    id: 2,
+    userAccount: "Facebook",
+    isUploading: false,
+  },
+  {
+    id: 3,
+    userAccount: "Facebook",
+    isUploading: false,
+  },
+  {
+    id: 4,
+    userAccount: "Facebook",
+    isUploading: false,
+  },
+  {
+    id: 5,
+    userAccount: "Facebook",
+    isUploading: false,
+  },
+];
+
+export default function Accounts() {
+  const [isUploading, setIsUploading] = useContext(UserContext);
+  useEffect(() => {
+    console.log(isUploading);
+  }, [isUploading]);
   return (
-    // <Animated animationOut="zoomOut"  isVisible={!props.fading} className={props.isRegisteredIconClicked ? "AccountsNone":"Accounts"}>
-      <div className="Accounts">
-        <div className="Header">
-          <h3>Your accounts</h3>
-          <h4>you can disconnect any account by clicking the cross </h4>
-        </div>
-        <div className="ItemsList">
-          <Item/>
-          <Item/>
-          <Item/>
-          <Item/>
-          <Item/>
-
-          <Item/>
-          <Item/>
-          <Item/>
-          <Item/>
-        </div>     
+    <div className="Accounts">
+      <div className="Header">
+        <h3>Your accounts</h3>
+        <h4>you can disconnect any account by clicking the cross </h4>
+      </div>
+      <div className="ItemsList">
+        {ITEMS.map(({ id, userAccount, isUploading }) => (
+          <Item key={id} isUploading={isUploading} />
+        ))}
+      </div>
     </div>
-    //</Animated>
-    );
+  );
 }
-

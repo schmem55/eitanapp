@@ -1,23 +1,20 @@
-import React, { useState } from 'react';
-import './App.css';
-import Accounts from './components/Accounts/Accounts'
-import Register from './components/Register/Register'
-import Footer from './components/Footer/Footer'
+import React, { useState, createContext, useContext } from "react";
+import "./App.css";
+import Accounts from "./components/Accounts/Accounts";
+import Register from "./components/Register/Register";
+import Footer from "./components/Footer/Footer";
+import UserContext from "./Context";
 
 function App() {
-  const [isClicked,setIsClicked] = useState(false)
-  const [fading, setFading] = useState(false); 
+  const [isUploading, setIsUploading] = useState(false);
 
   return (
-    <div className="App">
-      <div className="Body">
-        <Accounts  isRegisteredIconClicked={isClicked} fading={fading}/>
-        <Register fading={fading} onChangeIsClicked={setIsClicked}  onChangeFading={setFading} isClicked={fading}/>
+    <UserContext.Provider value={[isUploading, setIsUploading]}>
+      <div className="App">
+        <Accounts />
+        <Register />
       </div>
-      <div className="Footer">
-        <Footer/>
-      </div>
-    </div>
+    </UserContext.Provider>
   );
 }
 

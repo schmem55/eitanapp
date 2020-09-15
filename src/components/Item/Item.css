@@ -3,9 +3,14 @@
     margin-left: 20px;
     margin-top: 20px;
 }
+.ItemIsUploading{
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    opacity:0.4;
+}
 .Icon{
     position: absolute;
-
 }
 .Image{
     border-radius: 50%;
