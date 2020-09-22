@@ -2,7 +2,6 @@ import React, { useState, createContext, useContext } from "react";
 import "./App.css";
 import Accounts from "./components/Accounts/Accounts";
 import Register from "./components/Register/Register";
-import Footer from "./components/Footer/Footer";
 import UserContext from "./Context";
 
 function App() {
