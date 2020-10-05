@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import "./Connection.css";
 
@@ -8,46 +8,9 @@ export default function Connection() {
   const [completed, setCompleted] = useState(0);
   const [socketResponse, setSocketResponse] = useState(null);
   const [inputValue, setInputValue] = useState("");
+  const [isSucess, setIsSucess] = useState(false);
 
   const [isUploading, setIsUploading] = useContext(UserContext);
-
-  const changeStatus = () => {
-    //socket
-    if (socketResponse === "pending") {
-      if (completed <= 100) {
-        setTimeout(() => {
-          checkIfCreationIsOver();
-        }, 1000);
-        return <ProgressBar completed={completed} />;
-      } else {
-        return <div>success</div>;
-      }
-    } else if (socketResponse === "-1") {
-      return <div>something went wrong</div>;
-    } else if (socketResponse === "0") {
-      //then return message or html or qrcode
-      return <div>enter the code or the message</div>;
-    }
-  };
-
-  const checkIfCreationIsOver = () => {
-    //make request and check response pending or 2
-    if (completed > 30) {
-      // if completed ==="finish"
-      setCompleted((prevState) => 100);
-    }
-
-    if (socketResponse === "pending") {
-      setCompleted((prevState) => prevState + (100 - prevState) / 30);
-    }
-
-    if (completed === 100) {
-      setIsUploading((prevState) => !prevState);
-      setInputValue("");
-      setCompleted(101);
-      setSocketResponse("");
-    }
-  };
 
   const changeSocketResponse = (e) => {
     setInputValue(e.target.value);
@@ -55,18 +18,42 @@ export default function Connection() {
     setSocketResponse(e.target.value);
   };
 
+  useEffect(() => {
+    if (socketResponse == "pending") {
+      const interval = setInterval(() => {
+        setCompleted((prevState) => prevState + (100 - prevState) / 30);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [socketResponse]);
+
+  useEffect(() => {
+    if (completed > 10) {
+      //if completed is finish
+      setCompleted(100);
+      setIsUploading(true);
+
+      setTimeout(() => {
+        setSocketResponse("");
+        setIsSucess(true);
+      }, 2000);
+    }
+  }, [completed]);
+
   return (
     <div className="Connection">
-      {socketResponse === "pending" ||
-      socketResponse === "-1" ||
-      socketResponse === "0" ? (
-        <div className="Response">{changeStatus()}</div>
+      {socketResponse === "pending" ? (
+        <div className="Response">
+          <ProgressBar completed={completed} />
+        </div>
       ) : (
         <div>
           <input placeholder="username" />
           <input placeholder="password" />
         </div>
       )}
+
+      {isSucess && <div>SUCESS</div>}
 
       <div className="Box">
         <input value={inputValue} onChange={(e) => changeSocketResponse(e)} />

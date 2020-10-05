@@ -1,21 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import './Item.css';
-import {AiOutlineCloseCircle} from 'react-icons/ai'
+import React, { useEffect, useState } from "react";
+import "./Item.css";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 export default function Item(props) {
-  const [isUploading,setIsUploading]= useState(props.isUploading)
-
-  useEffect(()=>{
-    setIsUploading(props)
-  },[isUploading])
+  const [isUploaded, setIsUploaded] = useState(props.isUploaded);
+  const [openModal, setOpenModal] = useState(false);
 
   return (
-    <div>
-      <div className={isUploading?"ItemIsUploading":"Item"}>
-        <AiOutlineCloseCircle color="gray" className="Icon"/>
-        <img alt="profileIcon" className="Image" height="120" width="120" src={require('../../images/profile.jpg')}/>
+    <>
+      <div
+        onClick={() => setOpenModal(true)}
+        className={`${isUploaded ? "Item" : "ItemIsUploading"}`}
+      >
+        <AiOutlineCloseCircle color="gray" className="Icon" />
+        <img
+          alt="profileIcon"
+          className="Image"
+          height="120"
+          width="120"
+          src={require("../../images/profile.jpg")}
+        />
       </div>
-    </div>
+      {openModal && (
+        <div className="Modal">
+          your account is{" "}
+          {isUploaded ? (
+            <span>uploaded!</span>
+          ) : (
+            <span>in uploading process but you can continue</span>
+          )}
+        </div>
+      )}
+    </>
   );
 }
-

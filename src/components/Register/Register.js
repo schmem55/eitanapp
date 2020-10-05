@@ -43,10 +43,7 @@ export default function Register(props) {
         </button>
       </div>
 
-      <Connection
-      // isUploading={props.isUploading}
-      // setIsUploading={props.setIsUploading}
-      />
+      <Connection />
     </div>
   );
 }

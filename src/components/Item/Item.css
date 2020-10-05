@@ -1,18 +1,31 @@
-.Item{
-    float: left;
-    margin-left: 20px;
-    margin-top: 20px;
+.Item {
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+  opacity: 1;
 }
-.ItemIsUploading{
-    float: left;
-    margin-left: 20px;
-    margin-top: 20px;
-    opacity:0.4;
+
+.ItemIsUploading {
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+  opacity: 0.4;
 }
-.Icon{
-    position: absolute;
+
+.Icon {
+  position: absolute;
 }
-.Image{
-    border-radius: 50%;
-    border-color: rebeccapurple;
+
+.Image {
+  border-radius: 50%;
+  border-color: rebeccapurple;
+}
+
+.Modal {
+  width: 700px;
+  height: 600px;
+  border: solid 1px red;
+  border-radius: 18px;
+  background-color: white;
+  position: absolute;
 }
