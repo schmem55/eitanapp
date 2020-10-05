@@ -16,6 +16,11 @@
   position: absolute;
 }
 
+.modal-icon {
+  left: 0;
+  top: 0;
+}
+
 .Image {
   border-radius: 50%;
   border-color: rebeccapurple;
@@ -28,4 +33,5 @@
   border-radius: 18px;
   background-color: white;
   position: absolute;
+  padding: 50px;
 }

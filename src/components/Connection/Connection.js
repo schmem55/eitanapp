@@ -21,7 +21,9 @@ export default function Connection() {
   useEffect(() => {
     if (socketResponse == "pending") {
       const interval = setInterval(() => {
-        setCompleted((prevState) => prevState + (100 - prevState) / 30);
+        setCompleted(
+          (prevState) => prevState + Math.ceil((100 - prevState) / 30)
+        );
       }, 1000);
       return () => clearInterval(interval);
     }

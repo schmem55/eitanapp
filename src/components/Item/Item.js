@@ -23,6 +23,12 @@ export default function Item(props) {
       </div>
       {openModal && (
         <div className="Modal">
+          <AiOutlineCloseCircle
+            onClick={() => setOpenModal(false)}
+            color="gray"
+            className="Icon modal-icon"
+            size={50}
+          />
           your account is{" "}
           {isUploaded ? (
             <span>uploaded!</span>
